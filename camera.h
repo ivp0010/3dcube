@@ -7,7 +7,7 @@
 #include "vector.h"
 #include "matrix.h"
 
-mat_look(Mat* out, vec3 eye, vec3 center, vec3 up);
+Mat mat_look(Mat* out, vec3* eye, vec3* center, vec3* up);
 
 
 
