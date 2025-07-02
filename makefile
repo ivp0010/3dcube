@@ -3,7 +3,7 @@ CC = gcc
 CFLAGS = -Wall -g
 LDFLAGS = -lglfw -lGL -lm
 
-SRC = main.c matrix.c matrix.h vector.c vector.h camera.h camera.c shader.h shader.c
+SRC = main.c matrix.c matrix.h vector.c vector.h camera.h camera.c shader.h shader.c geoLoader.h geoLoader.c model.h model.c timer.h timer.c
 OBJ = $(SRC:.c=.o)
 EXEC = cube
 
