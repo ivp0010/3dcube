@@ -9,6 +9,6 @@
 #include "vector.h"
 #include <stdlib.h>
 
-void make_cube_model(Mat* model, float time, float rotation_speed);
+void make_cube_model(Mat* model, float angle);
 
 #endif

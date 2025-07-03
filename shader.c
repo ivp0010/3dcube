@@ -27,6 +27,7 @@ char* load_file(const char* filename)
 	return buffer;
 }
 
+
 GLuint compile_shader(const char* source, GLenum type)
 {
 	GLuint id = glCreateShader(type);
@@ -63,7 +64,7 @@ GLuint link_program(GLuint vertexShader, GLuint fragmentShader)
 	return program;
 }
 
-shader shader_create(const char* vertexPath, const char* fragmentPath)
+GLuint shader_create(const char* vertexPath, const char* fragmentPath)
 {
 	char* vertex_source = load_file(vertexPath);
 	char* fragment_source = load_file(fragmentPath);
@@ -97,7 +98,7 @@ shader shader_create(const char* vertexPath, const char* fragmentPath)
 		fprintf(stderr, "Fragment shader compilation error:\n%s\n", infoLog);
 	}
 	
-	GLuint shader_program =	link_program(vertex_shader, fragment_shader);
+	GLuint shader_program = link_program(vertex_shader, fragment_shader);
 
 	glGetProgramiv(shader_program, GL_LINK_STATUS, &success);
   	if(!success) 
@@ -111,9 +112,7 @@ shader shader_create(const char* vertexPath, const char* fragmentPath)
 	free(vertex_source);
 	free(fragment_source);
 	
-	shader s;
-	s.id = shader_program;
-	return s;
+	return shader_program;
 }
 
 void shader_set_mat(GLuint shader_program, const char* name, const Mat* matrix)

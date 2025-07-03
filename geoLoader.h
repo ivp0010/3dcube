@@ -1,5 +1,6 @@
 #ifndef GEOLOADER_H
 #define GEOLOADER_H
+
 #include <GLFW/glfw3.h>
 #include <stdio.h>
 #include <math.h>
@@ -27,6 +28,7 @@ typedef struct
 	GLuint vao, vbo, ebo;
 }mesh;
 
+void load_geometry(mesh* geo);
 void create_buffer(mesh* geo);
 void destroy_mesh(mesh* geo);
 void render_mesh(mesh* geo, GLuint id);

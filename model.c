@@ -8,18 +8,14 @@
 #include <stdlib.h>
 #include "model.h"
 
-void make_cube_model(Mat* model, float time, float rotation_speed)
+void make_cube_model(Mat* model, float angle)
 {
-	makeIdentityMatrix(model);
-	Mat T, R, S;
+    Mat T, R, S, temp;
+    makeTranslationMatrix(&T, 0.f, 0.f, -10.f);
+    makeRotationMatrix(&R, angle);
+    makeScalingMatrix(&S, 1.f, 1.f, 1.f);
 
-	makeTranslationMatrix(&T, 0.f, 0.f, -5.f);
-	float angle = time * rotation_speed;
-	makeRotationMatrix(&R, angle);
-	makeScalingMatrix(&S, 1.f, 1.f, 1.f);
+    matrixMultiplcation(&temp, &R, &S);
 
-	matrixMultiplcation(model, model, &S);
-	matrixMultiplcation(model, model, &R);
-	matrixMultiplcation(model, model, &T);
-
+    matrixMultiplcation(model, &T, &temp);
 }
